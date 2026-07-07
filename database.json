@@ -2,10 +2,45 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:18:57.252Z"
+    "updatedAt": "2026-07-07T20:19:23.685Z"
   },
-  "products": [],
+  "products": [
+    {
+      "id": "aa427f93-dad5-4edc-9f4c-d20bbf8855e0",
+      "name": "MILHO EM LATA",
+      "category": "Outros",
+      "brand": "",
+      "quantity": 2,
+      "unit": "un",
+      "location": "",
+      "barcode": "",
+      "notes": "",
+      "photo": "",
+      "expirations": [
+        {
+          "id": "10655bbb-4ed6-4c60-a109-e67ce078c243",
+          "date": "2026-08-01",
+          "consumed": false
+        },
+        {
+          "id": "74a48067-e0f6-47d8-8db3-ccedad329960",
+          "date": "2026-08-01",
+          "consumed": false
+        }
+      ],
+      "favorite": false,
+      "updatedAt": "2026-07-07T20:19:23.683Z",
+      "createdAt": "2026-07-07T20:19:23.683Z"
+    }
+  ],
   "history": [
+    {
+      "id": "f21c817d-cbfe-4a6b-9fa2-3260ae02a713",
+      "date": "2026-07-07T20:19:23.683Z",
+      "productName": "MILHO EM LATA",
+      "quantity": 2,
+      "type": "Entrada"
+    },
     {
       "id": "61a2d723-fef9-4110-ab6a-44880b1e4054",
       "date": "2026-07-07T20:17:58.151Z",
