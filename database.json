@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:17:57.072Z"
+    "updatedAt": "2026-07-07T20:17:58.152Z"
   },
   "products": [
     {
@@ -33,7 +33,7 @@
       "name": "MOLHO TOMATE",
       "category": "Outros",
       "brand": "",
-      "quantity": 2,
+      "quantity": 0,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -100,6 +100,20 @@
     }
   ],
   "history": [
+    {
+      "id": "61a2d723-fef9-4110-ab6a-44880b1e4054",
+      "date": "2026-07-07T20:17:58.151Z",
+      "productName": "MOLHO TOMATE",
+      "quantity": 1,
+      "type": "Saída"
+    },
+    {
+      "id": "f23a0734-4cf0-47f0-808a-9c9f567f6dea",
+      "date": "2026-07-07T20:17:57.639Z",
+      "productName": "MOLHO TOMATE",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "79e9d941-9ebd-4f08-b72f-e8843ca9d6d5",
       "date": "2026-07-07T20:17:57.071Z",
@@ -263,6 +277,13 @@
     }
   ],
   "shoppingList": [
+    {
+      "id": "eb350245-7bc1-4478-8914-eb70edbc7fa0",
+      "productName": "MOLHO TOMATE",
+      "quantity": 1,
+      "purchased": false,
+      "createdAt": "2026-07-07T20:17:58.151Z"
+    },
     {
       "id": "28194d27-7c84-4a23-8d94-bc1841ab0c7f",
       "productName": "IOGURTE VIGOR",
