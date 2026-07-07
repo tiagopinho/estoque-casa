@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:33:37.879Z"
+    "updatedAt": "2026-07-07T20:33:38.999Z"
   },
   "products": [
     {
@@ -10,7 +10,7 @@
       "name": "TESTE",
       "category": "Outros",
       "brand": "",
-      "quantity": 1,
+      "quantity": 0,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -44,7 +44,8 @@
         {
           "id": "49d61eec-aadf-4f49-a9f0-628e23c49b84",
           "date": "2026-07-09",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-07T20:33:38.999Z"
         }
       ],
       "favorite": false,
@@ -53,6 +54,13 @@
     }
   ],
   "history": [
+    {
+      "id": "718a9bf7-3528-4ec2-abbb-dd3fe2af80a1",
+      "date": "2026-07-07T20:33:38.999Z",
+      "productName": "TESTE",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "33a7c79c-b127-41ef-9bd1-b7f7ca482e7b",
       "date": "2026-07-07T20:33:37.879Z",
@@ -89,7 +97,15 @@
       "type": "Entrada"
     }
   ],
-  "shoppingList": [],
+  "shoppingList": [
+    {
+      "id": "39deab63-ebc8-4f78-9bf3-663be0ebe1e4",
+      "productName": "TESTE",
+      "quantity": 1,
+      "purchased": false,
+      "createdAt": "2026-07-07T20:33:38.999Z"
+    }
+  ],
   "statistics": {
     "backups": []
   }
