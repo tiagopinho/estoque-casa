@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:14:22.678Z"
+    "updatedAt": "2026-07-07T20:17:36.968Z"
   },
   "products": [
     {
@@ -20,7 +20,8 @@
         {
           "id": "48313f2e-b076-4b64-b712-de3e8c557f19",
           "date": "2026-07-10",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-07T20:17:36.967Z"
         }
       ],
       "favorite": false,
@@ -98,6 +99,13 @@
     }
   ],
   "history": [
+    {
+      "id": "e4c5826c-c94a-4f62-bf89-921ddb07b0d1",
+      "date": "2026-07-07T20:17:36.967Z",
+      "productName": "IOGURTE VIGOR",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "7a89f18d-12ec-451c-bbd5-fa59348adc17",
       "date": "2026-07-07T20:14:22.678Z",
