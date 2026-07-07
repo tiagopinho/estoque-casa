@@ -2,32 +2,9 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:17:58.152Z"
+    "updatedAt": "2026-07-07T20:18:48.468Z"
   },
   "products": [
-    {
-      "id": "53b81a6e-44a9-4b03-9759-c48f439f1fd0",
-      "name": "IOGURTE VIGOR",
-      "category": "Outros",
-      "brand": "",
-      "quantity": 0,
-      "unit": "un",
-      "location": "",
-      "barcode": "",
-      "notes": "",
-      "photo": "",
-      "expirations": [
-        {
-          "id": "48313f2e-b076-4b64-b712-de3e8c557f19",
-          "date": "2026-07-10",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:17:36.967Z"
-        }
-      ],
-      "favorite": false,
-      "updatedAt": "2026-07-07T20:08:25.904Z",
-      "createdAt": "2026-07-07T20:08:25.904Z"
-    },
     {
       "id": "8c28e7d8-5158-4c25-aa85-7182c3fc7f3d",
       "name": "MOLHO TOMATE",
