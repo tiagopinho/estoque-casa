@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:14:21.110Z"
+    "updatedAt": "2026-07-07T20:14:22.678Z"
   },
   "products": [
     {
@@ -98,6 +98,13 @@
     }
   ],
   "history": [
+    {
+      "id": "7a89f18d-12ec-451c-bbd5-fa59348adc17",
+      "date": "2026-07-07T20:14:22.678Z",
+      "productName": "teste",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "751e9100-d1e6-4c9e-8151-c7487125b2e4",
       "date": "2026-07-07T20:14:21.109Z",
