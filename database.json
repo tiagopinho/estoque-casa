@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:18:48.468Z"
+    "updatedAt": "2026-07-07T20:18:52.629Z"
   },
   "products": [
     {
@@ -27,53 +27,6 @@
       "favorite": false,
       "updatedAt": "2026-07-07T20:09:48.231Z",
       "createdAt": "2026-07-07T20:09:48.231Z"
-    },
-    {
-      "id": "a32b29b7-5129-45fc-8c93-07685e78342e",
-      "name": "teste",
-      "category": "Outros",
-      "brand": "",
-      "quantity": 0,
-      "unit": "un",
-      "location": "",
-      "barcode": "",
-      "notes": "",
-      "photo": "",
-      "expirations": [
-        {
-          "id": "dfdbc7a6-41a2-4383-b7f7-5384d9c1f5e9",
-          "date": "2026-07-11",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:13:59.350Z"
-        },
-        {
-          "id": "d5be3a7d-0df4-4ddc-8a54-9694c13af85d",
-          "date": "2026-07-11",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:14:02.421Z"
-        },
-        {
-          "id": "c15d66ab-76b8-462b-818b-8b71620ce7a8",
-          "date": "2026-07-11",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:14:04.774Z"
-        },
-        {
-          "id": "90dde6f5-ff8f-4fec-ae85-dc5f3801b8e6",
-          "date": "2026-07-11",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:14:10.221Z"
-        },
-        {
-          "id": "f37c39bf-4b60-4d0a-916a-8489668820a7",
-          "date": "2026-07-11",
-          "consumed": true,
-          "consumedAt": "2026-07-07T20:14:11.670Z"
-        }
-      ],
-      "favorite": false,
-      "updatedAt": "2026-07-07T20:13:53.681Z",
-      "createdAt": "2026-07-07T20:13:53.681Z"
     }
   ],
   "history": [
