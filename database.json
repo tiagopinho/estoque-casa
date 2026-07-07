@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:13:53.683Z"
+    "updatedAt": "2026-07-07T20:13:59.350Z"
   },
   "products": [
     {
@@ -64,7 +64,8 @@
         {
           "id": "dfdbc7a6-41a2-4383-b7f7-5384d9c1f5e9",
           "date": "2026-07-11",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-07T20:13:59.350Z"
         },
         {
           "id": "d5be3a7d-0df4-4ddc-8a54-9694c13af85d",
@@ -93,6 +94,13 @@
     }
   ],
   "history": [
+    {
+      "id": "190a1f3b-7f76-4c00-b665-47982fc1847d",
+      "date": "2026-07-07T20:13:59.350Z",
+      "productName": "teste",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "4c508343-079d-4e7a-af84-e1d091663ac6",
       "date": "2026-07-07T20:13:53.681Z",
