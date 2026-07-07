@@ -109,7 +109,7 @@ function bindEvents(){
 
 function showView(id){ $$('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.view===id)); $$('.view').forEach(v=>v.classList.toggle('active-view',v.id===id)); }
 
-function productQty(p){ return p.expirations.filter(e=>!e.consumed).length || Number(p.quantity || 0); }
+function productQty(p){ const exps=Array.isArray(p.expirations)?p.expirations:[]; return exps.length ? exps.filter(e=>!e.consumed).length : Number(p.quantity || 0); }
 function sortedExpirations(p){ return [...(p.expirations||[])].filter(e=>!e.consumed).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')); }
 function productStatus(p){ const exp=sortedExpirations(p)[0]; if(!exp) return {label:'Sem validade', cls:'ok'}; const d=daysUntil(exp.date); if(d<0) return {label:'Vencido', cls:'danger'}; if(d===0) return {label:'Vence hoje', cls:'warning'}; if(d<=7) return {label:`Vence em ${d} dias`, cls:'warning'}; if(d<=15) return {label:`Vence em ${d} dias`, cls:'warning'}; return {label:`Validade ${fmtDate(exp.date)}`, cls:'ok'}; }
 
@@ -127,7 +127,7 @@ function topConsumed(){ const map={}; state.db.history.filter(h=>h.type==='Saíd
 
 function renderProducts(){
   const q=$('#searchInput').value?.toLowerCase()||'', cat=$('#categoryFilter').value, vf=$('#validityFilter').value;
-  let products=state.db.products.filter(p=>[p.name,p.brand,p.location,p.category].join(' ').toLowerCase().includes(q));
+  let products=state.db.products.filter(p=>productQty(p)>0).filter(p=>[p.name,p.brand,p.location,p.category].join(' ').toLowerCase().includes(q));
   if(cat && cat!=='all') products=products.filter(p=>p.category===cat);
   if(vf!=='all') products=products.filter(p=>{ const exp=sortedExpirations(p)[0]; if(!exp) return false; const d=daysUntil(exp.date); return vf==='expired'?d<0:vf==='today'?d===0:d>=0&&d<=Number(vf); });
   $('#productsGrid').innerHTML = products.length ? products.map(productCard).join('') : '<div class="empty glass-card">Nenhum produto encontrado.</div>';
@@ -136,27 +136,57 @@ function renderProducts(){
   $$('.duplicate-product').forEach(b=>b.onclick=()=>duplicateProduct(b.dataset.id));
   $$('.favorite-product').forEach(b=>b.onclick=()=>toggleFavorite(b.dataset.id));
 }
-function productCard(p){ const st=productStatus(p), qty=productQty(p), exp=sortedExpirations(p).slice(0,4).map(e=>fmtDate(e.date)).join(', '); return `<article class="product-card"><div class="product-photo">${p.photo?`<img src="${p.photo}" alt="${p.name}">`:'🍎'}</div><div class="product-head"><div><h3>${escapeHtml(p.name)}</h3><p class="muted small">${escapeHtml(p.brand||'Sem marca')} · ${escapeHtml(p.category||'Outros')}</p></div><button class="icon-btn favorite-product" data-id="${p.id}">${p.favorite?'★':'☆'}</button></div><div><span class="badge ${st.cls}">${st.label}</span></div><p><strong>${qty}</strong> ${escapeHtml(p.unit||'un')} · <span class="muted">${escapeHtml(p.location||'Sem local')}</span></p><p class="muted small">Validades: ${exp || 'Não informadas'}</p><div class="product-actions"><button class="soft-btn consume-product" data-id="${p.id}">Consumir</button><button class="soft-btn edit-product" data-id="${p.id}">Editar</button><button class="soft-btn duplicate-product" data-id="${p.id}">Duplicar</button></div></article>`; }
+function productCard(p){ const st=productStatus(p), qty=productQty(p), exp=sortedExpirations(p).slice(0,4).map(e=>fmtDate(e.date)).join(', '); return `<article class="product-card compact"><div class="product-head"><div><h3>${escapeHtml(p.name)}</h3><p class="muted small">${escapeHtml(p.brand||'Sem marca')} · ${escapeHtml(p.category||'Outros')}</p></div><button class="icon-btn favorite-product" data-id="${p.id}">${p.favorite?'★':'☆'}</button></div><div><span class="badge ${st.cls}">${st.label}</span></div><p><strong>${qty}</strong> ${escapeHtml(p.unit||'un')} · <span class="muted">${escapeHtml(p.location||'Sem local')}</span></p><p class="muted small">Validades: ${exp || 'Não informadas'}</p><div class="product-actions"><button class="soft-btn consume-product" data-id="${p.id}">Consumir</button><button class="soft-btn edit-product" data-id="${p.id}">Editar</button><button class="soft-btn duplicate-product" data-id="${p.id}">Duplicar</button></div></article>`; }
 function escapeHtml(str=''){ return String(str).replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 
 function openProduct(id=null){
   state.editingId=id; const p=id?state.db.products.find(x=>x.id===id):null;
   $('#productDialogTitle').textContent=p?'Editar produto':'Novo produto'; $('#deleteProductBtn').classList.toggle('hidden',!p);
-  $('#productId').value=p?.id||''; $('#name').value=p?.name||''; $('#category').value=p?.category||'Outros'; $('#brand').value=p?.brand||''; $('#quantity').value=p?productQty(p):1; $('#unit').value=p?.unit||'un'; $('#location').value=p?.location||''; $('#barcode').value=p?.barcode||''; $('#notes').value=p?.notes||''; $('#expirations').value=(p?.expirations||[]).filter(e=>!e.consumed).map(e=>e.date).join('\n'); $('#photo').value='';
+  $('#productId').value=p?.id||''; $('#name').value=p?.name||''; $('#category').value=p?.category||'Outros'; $('#brand').value=p?.brand||''; $('#quantity').value=p?productQty(p):1; $('#unit').value=p?.unit||'un'; $('#location').value=p?.location||''; $('#barcode').value=p?.barcode||''; $('#notes').value=p?.notes||''; const activeDates=(p?.expirations||[]).filter(e=>!e.consumed).map(e=>e.date).filter(Boolean); const uniqueDates=[...new Set(activeDates)]; $('#quickExpiration').value=uniqueDates.length===1 ? uniqueDates[0] : ''; $('#expirations').value=uniqueDates.length>1 ? activeDates.join('\n') : '';
   $('#productDialog').showModal();
 }
 async function fileToBase64(file){ if(!file) return null; return new Promise(res=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.readAsDataURL(file); }); }
 async function saveProductForm(e){
-  e.preventDefault(); const id=$('#productId').value||uid(); const existing=state.db.products.find(p=>p.id===id); const photo=await fileToBase64($('#photo').files[0]);
-  const expirations=$('#expirations').value.split(/\n|,/).map(v=>v.trim()).filter(Boolean).map(date=>({ id:uid(), date, consumed:false }));
-  const product={ id, name:$('#name').value.trim(), category:$('#category').value, brand:$('#brand').value.trim(), quantity:Number($('#quantity').value||expirations.length), unit:$('#unit').value, location:$('#location').value.trim(), barcode:$('#barcode').value.trim(), notes:$('#notes').value.trim(), photo:photo || existing?.photo || '', expirations, favorite:existing?.favorite||false, updatedAt:new Date().toISOString() };
+  e.preventDefault();
+  const id=$('#productId').value||uid();
+  const existing=state.db.products.find(p=>p.id===id);
+  const quantity=Math.max(0, Number($('#quantity').value||0));
+  const manualDates=$('#expirations').value.split(/\n|,/).map(v=>v.trim()).filter(Boolean);
+  const quickDate=$('#quickExpiration').value;
+  let dates=[];
+
+  if(manualDates.length){
+    dates=manualDates;
+  } else if(quickDate && quantity>0){
+    dates=Array.from({length:quantity},()=>quickDate);
+  }
+
+  const expirations=dates.map(date=>({ id:uid(), date, consumed:false }));
+  const product={
+    id,
+    name:$('#name').value.trim(),
+    category:$('#category').value,
+    brand:$('#brand').value.trim(),
+    quantity:expirations.length ? expirations.length : quantity,
+    unit:$('#unit').value,
+    location:$('#location').value.trim(),
+    barcode:$('#barcode').value.trim(),
+    notes:$('#notes').value.trim(),
+    photo:'',
+    expirations,
+    favorite:existing?.favorite||false,
+    updatedAt:new Date().toISOString()
+  };
   if(existing) Object.assign(existing, product); else state.db.products.push({...product, createdAt:new Date().toISOString()});
-  addHistory(product.name, productQty(product), existing?'Correção':'Entrada'); ensureShoppingList(product); $('#productDialog').close(); await persist(`${existing?'Editar':'Adicionar'} produto: ${product.name}`);
+  addHistory(product.name, productQty(product), existing?'Correção':'Entrada');
+  ensureShoppingList(product);
+  $('#productDialog').close();
+  await persist(`${existing?'Editar':'Adicionar'} produto: ${product.name}`);
 }
 function addHistory(productName, quantity, type){ state.db.history.unshift({ id:uid(), date:new Date().toISOString(), productName, quantity:Number(quantity), type }); }
-async function consumeProduct(id){ const p=state.db.products.find(x=>x.id===id); if(!p) return; const first=sortedExpirations(p)[0]; if(first){ const original=p.expirations.find(e=>e.id===first.id); original.consumed=true; original.consumedAt=new Date().toISOString(); } else if(Number(p.quantity)>0) p.quantity--; addHistory(p.name,1,'Saída'); ensureShoppingList(p); await persist(`Consumir produto: ${p.name}`); }
+async function consumeProduct(id){ const p=state.db.products.find(x=>x.id===id); if(!p) return; const first=sortedExpirations(p)[0]; if(first){ const original=p.expirations.find(e=>e.id===first.id); original.consumed=true; original.consumedAt=new Date().toISOString(); } else if(Number(p.quantity)>0){ p.quantity--; } p.quantity=productQty(p); addHistory(p.name,1,'Saída'); ensureShoppingList(p); await persist(`Consumir produto: ${p.name}`); }
 function ensureShoppingList(p){ if(productQty(p)===0 && !state.db.shoppingList.some(i=>i.productName===p.name && !i.removed)){ state.db.shoppingList.unshift({id:uid(), productName:p.name, quantity:1, purchased:false, createdAt:new Date().toISOString()}); } }
-async function duplicateProduct(id){ const p=state.db.products.find(x=>x.id===id); if(!p) return; const copy=JSON.parse(JSON.stringify(p)); copy.id=uid(); copy.name=`${copy.name} cópia`; copy.expirations=(copy.expirations||[]).map(e=>({...e,id:uid(),consumed:false})); state.db.products.unshift(copy); addHistory(copy.name, productQty(copy),'Entrada'); await persist(`Duplicar produto: ${p.name}`); }
+async function duplicateProduct(id){ const p=state.db.products.find(x=>x.id===id); if(!p) return; const copy=JSON.parse(JSON.stringify(p)); copy.id=uid(); copy.name=copy.name; copy.expirations=(copy.expirations||[]).filter(e=>!e.consumed).map(e=>({id:uid(),date:e.date,consumed:false})); copy.quantity=productQty(copy); copy.photo=''; copy.createdAt=new Date().toISOString(); copy.updatedAt=new Date().toISOString(); state.db.products.unshift(copy); addHistory(copy.name, productQty(copy),'Entrada'); await persist(`Duplicar produto: ${p.name}`); openProduct(copy.id); }
 async function toggleFavorite(id){ const p=state.db.products.find(x=>x.id===id); if(p){ p.favorite=!p.favorite; await persist(`Favoritar produto: ${p.name}`); } }
 async function deleteCurrentProduct(){ const id=$('#productId').value; const p=state.db.products.find(x=>x.id===id); state.db.products=state.db.products.filter(x=>x.id!==id); $('#productDialog').close(); await persist(`Excluir produto: ${p?.name||id}`); }
 
