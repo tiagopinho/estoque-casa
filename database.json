@@ -2,10 +2,41 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T00:00:00.000Z"
+    "updatedAt": "2026-07-07T20:08:25.912Z"
   },
-  "products": [],
-  "history": [],
+  "products": [
+    {
+      "id": "53b81a6e-44a9-4b03-9759-c48f439f1fd0",
+      "name": "IOGURTE VIGOR",
+      "category": "Outros",
+      "brand": "",
+      "quantity": 5,
+      "unit": "un",
+      "location": "",
+      "barcode": "",
+      "notes": "",
+      "photo": "",
+      "expirations": [
+        {
+          "id": "48313f2e-b076-4b64-b712-de3e8c557f19",
+          "date": "2026-07-10",
+          "consumed": false
+        }
+      ],
+      "favorite": false,
+      "updatedAt": "2026-07-07T20:08:25.904Z",
+      "createdAt": "2026-07-07T20:08:25.904Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "29ef5c0d-caca-49f8-ae19-71c0f2f86459",
+      "date": "2026-07-07T20:08:25.904Z",
+      "productName": "IOGURTE VIGOR",
+      "quantity": 1,
+      "type": "Entrada"
+    }
+  ],
   "shoppingList": [],
   "statistics": {
     "backups": []
