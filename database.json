@@ -2,10 +2,61 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T00:00:00.000Z"
+    "updatedAt": "2026-07-07T20:33:32.496Z"
   },
-  "products": [],
-  "history": [],
+  "products": [
+    {
+      "id": "90e13007-c5ea-40d0-aea5-a8064f0c5d91",
+      "name": "TESTE",
+      "category": "Outros",
+      "brand": "",
+      "quantity": 5,
+      "unit": "un",
+      "location": "",
+      "barcode": "",
+      "notes": "",
+      "photo": "",
+      "expirations": [
+        {
+          "id": "843cd192-b965-4c74-a5af-a232f42b7155",
+          "date": "2026-07-09",
+          "consumed": false
+        },
+        {
+          "id": "4cc60654-64ae-40eb-9e81-29ca84c4542c",
+          "date": "2026-07-09",
+          "consumed": false
+        },
+        {
+          "id": "5273c5d9-bafc-428a-bedb-740177c462cc",
+          "date": "2026-07-09",
+          "consumed": false
+        },
+        {
+          "id": "c876365e-5204-49cb-a23d-2a9c57c4cb8a",
+          "date": "2026-07-09",
+          "consumed": false
+        },
+        {
+          "id": "49d61eec-aadf-4f49-a9f0-628e23c49b84",
+          "date": "2026-07-09",
+          "consumed": false
+        }
+      ],
+      "favorite": false,
+      "updatedAt": "2026-07-07T20:33:32.495Z",
+      "createdAt": "2026-07-07T20:33:32.495Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "5bb2f14c-b09d-4b2e-aeb6-d1d705df51e2",
+      "date": "2026-07-07T20:33:32.495Z",
+      "productName": "TESTE",
+      "quantity": 5,
+      "type": "Entrada"
+    }
+  ],
   "shoppingList": [],
   "statistics": {
     "backups": []
