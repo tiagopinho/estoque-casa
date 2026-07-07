@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:17:36.968Z"
+    "updatedAt": "2026-07-07T20:17:46.200Z"
   },
   "products": [
     {
@@ -43,7 +43,8 @@
         {
           "id": "9041acf6-d703-455a-a935-00e8d954dfe0",
           "date": "05-10-2026",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-07T20:17:46.199Z"
         }
       ],
       "favorite": false,
@@ -99,6 +100,13 @@
     }
   ],
   "history": [
+    {
+      "id": "9189e4df-0f7e-45bb-b5ca-a953f7f9344b",
+      "date": "2026-07-07T20:17:46.199Z",
+      "productName": "MOLHO TOMATE",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "e4c5826c-c94a-4f62-bf89-921ddb07b0d1",
       "date": "2026-07-07T20:17:36.967Z",
