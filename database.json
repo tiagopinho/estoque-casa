@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:14:16.278Z"
+    "updatedAt": "2026-07-07T20:14:17.150Z"
   },
   "products": [
     {
@@ -54,7 +54,7 @@
       "name": "teste",
       "category": "Outros",
       "brand": "",
-      "quantity": 4,
+      "quantity": 2,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -98,6 +98,20 @@
     }
   ],
   "history": [
+    {
+      "id": "87ef17db-a6c4-4e8a-80f3-b3c3e5089e7d",
+      "date": "2026-07-07T20:14:17.149Z",
+      "productName": "teste",
+      "quantity": 1,
+      "type": "Saída"
+    },
+    {
+      "id": "3730d3b9-962c-4dd6-8b67-7adb2e99dbfc",
+      "date": "2026-07-07T20:14:16.751Z",
+      "productName": "teste",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "4313d560-7e45-47ed-a4a1-ed1aecb11151",
       "date": "2026-07-07T20:14:16.277Z",
