@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:17:55.480Z"
+    "updatedAt": "2026-07-07T20:17:57.072Z"
   },
   "products": [
     {
@@ -33,7 +33,7 @@
       "name": "MOLHO TOMATE",
       "category": "Outros",
       "brand": "",
-      "quantity": 3,
+      "quantity": 2,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -100,6 +100,13 @@
     }
   ],
   "history": [
+    {
+      "id": "79e9d941-9ebd-4f08-b72f-e8843ca9d6d5",
+      "date": "2026-07-07T20:17:57.071Z",
+      "productName": "MOLHO TOMATE",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "d1562943-8649-43d9-b39e-c80973a81f25",
       "date": "2026-07-07T20:17:55.479Z",
