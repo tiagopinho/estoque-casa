@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:19:28.339Z"
+    "updatedAt": "2026-07-07T20:19:32.428Z"
   },
   "products": [
     {
@@ -26,7 +26,8 @@
         {
           "id": "74a48067-e0f6-47d8-8db3-ccedad329960",
           "date": "2026-08-01",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-07T20:19:32.427Z"
         }
       ],
       "favorite": false,
@@ -35,6 +36,13 @@
     }
   ],
   "history": [
+    {
+      "id": "d90597ba-5aa9-481c-b6cc-37cdff15ebc5",
+      "date": "2026-07-07T20:19:32.427Z",
+      "productName": "MILHO EM LATA",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "ad1525f3-32a6-4a6b-9986-8531b6b7dc76",
       "date": "2026-07-07T20:19:28.339Z",
