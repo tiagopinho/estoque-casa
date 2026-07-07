@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:17:52.407Z"
+    "updatedAt": "2026-07-07T20:17:54.199Z"
   },
   "products": [
     {
@@ -10,7 +10,7 @@
       "name": "IOGURTE VIGOR",
       "category": "Outros",
       "brand": "",
-      "quantity": 2,
+      "quantity": 0,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -100,6 +100,20 @@
     }
   ],
   "history": [
+    {
+      "id": "e918b73e-b2bc-4918-8f4f-2c3a5f6c08b6",
+      "date": "2026-07-07T20:17:54.199Z",
+      "productName": "IOGURTE VIGOR",
+      "quantity": 1,
+      "type": "Saída"
+    },
+    {
+      "id": "ae070049-faee-4dc6-bd4b-315e170d71f7",
+      "date": "2026-07-07T20:17:53.063Z",
+      "productName": "IOGURTE VIGOR",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "f9287677-639d-4a4e-9d80-1549271aa0b9",
       "date": "2026-07-07T20:17:52.407Z",
@@ -235,6 +249,13 @@
     }
   ],
   "shoppingList": [
+    {
+      "id": "28194d27-7c84-4a23-8d94-bc1841ab0c7f",
+      "productName": "IOGURTE VIGOR",
+      "quantity": 1,
+      "purchased": false,
+      "createdAt": "2026-07-07T20:17:54.199Z"
+    },
     {
       "id": "8cf4dc90-ab9d-4c11-bdfa-ee1273eeec4f",
       "productName": "teste",
