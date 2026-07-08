@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-07T20:33:38.999Z"
+    "updatedAt": "2026-07-08T10:21:43.087Z"
   },
   "products": [
     {
@@ -51,9 +51,58 @@
       "favorite": false,
       "updatedAt": "2026-07-07T20:33:32.495Z",
       "createdAt": "2026-07-07T20:33:32.495Z"
+    },
+    {
+      "id": "7456ec98-3289-414e-8785-efd68122711c",
+      "name": "Iogurte",
+      "category": "Outros",
+      "brand": "",
+      "quantity": 5,
+      "unit": "un",
+      "location": "",
+      "barcode": "",
+      "notes": "",
+      "photo": "",
+      "expirations": [
+        {
+          "id": "25a70257-2b37-47db-a39c-aba949095260",
+          "date": "2026-07-10",
+          "consumed": false
+        },
+        {
+          "id": "8832f314-dbca-48da-bca8-2b291f8b3654",
+          "date": "2026-07-10",
+          "consumed": false
+        },
+        {
+          "id": "25bbc384-8a72-4f2e-80c7-01cc5aca3712",
+          "date": "2026-07-10",
+          "consumed": false
+        },
+        {
+          "id": "430d01c7-f623-4467-8b74-c71bdf149def",
+          "date": "2026-07-10",
+          "consumed": false
+        },
+        {
+          "id": "191362d0-5bf9-42e6-b3ef-735f6514bcd6",
+          "date": "2026-07-10",
+          "consumed": false
+        }
+      ],
+      "favorite": false,
+      "updatedAt": "2026-07-08T10:21:43.082Z",
+      "createdAt": "2026-07-08T10:21:43.082Z"
     }
   ],
   "history": [
+    {
+      "id": "8740e6f3-149d-44e8-b77d-e19b96a25579",
+      "date": "2026-07-08T10:21:43.082Z",
+      "productName": "Iogurte",
+      "quantity": 5,
+      "type": "Entrada"
+    },
     {
       "id": "718a9bf7-3528-4ec2-abbb-dd3fe2af80a1",
       "date": "2026-07-07T20:33:38.999Z",
