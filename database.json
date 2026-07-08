@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-08T10:22:07.406Z"
+    "updatedAt": "2026-07-08T10:22:08.808Z"
   },
   "products": [
     {
@@ -57,7 +57,7 @@
       "name": "Iogurte",
       "category": "Outros",
       "brand": "",
-      "quantity": 2,
+      "quantity": 1,
       "unit": "un",
       "location": "",
       "barcode": "",
@@ -85,7 +85,8 @@
         {
           "id": "430d01c7-f623-4467-8b74-c71bdf149def",
           "date": "2026-07-10",
-          "consumed": false
+          "consumed": true,
+          "consumedAt": "2026-07-08T10:22:08.802Z"
         },
         {
           "id": "191362d0-5bf9-42e6-b3ef-735f6514bcd6",
@@ -99,6 +100,13 @@
     }
   ],
   "history": [
+    {
+      "id": "460b492a-1bea-4328-b1f6-6ec5386e2c4a",
+      "date": "2026-07-08T10:22:08.802Z",
+      "productName": "Iogurte",
+      "quantity": 1,
+      "type": "Saída"
+    },
     {
       "id": "8facadaf-061b-4b7b-a62a-5c0cb5b6a28a",
       "date": "2026-07-08T10:22:07.400Z",
