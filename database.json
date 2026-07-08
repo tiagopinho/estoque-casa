@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-08T10:22:09.923Z"
+    "updatedAt": "2026-07-08T18:23:32.683Z"
   },
   "products": [
     {
@@ -192,7 +192,8 @@
       "productName": "Iogurte",
       "quantity": 1,
       "purchased": false,
-      "createdAt": "2026-07-08T10:22:09.918Z"
+      "createdAt": "2026-07-08T10:22:09.918Z",
+      "removed": true
     },
     {
       "id": "39deab63-ebc8-4f78-9bf3-663be0ebe1e4",
