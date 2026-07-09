@@ -2,7 +2,7 @@
   "config": {
     "version": 1,
     "createdAt": "2026-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-08T18:23:32.683Z"
+    "updatedAt": "2026-07-09T23:02:59.502Z"
   },
   "products": [
     {
@@ -200,7 +200,8 @@
       "productName": "TESTE",
       "quantity": 1,
       "purchased": false,
-      "createdAt": "2026-07-07T20:33:38.999Z"
+      "createdAt": "2026-07-07T20:33:38.999Z",
+      "removed": true
     }
   ],
   "statistics": {
