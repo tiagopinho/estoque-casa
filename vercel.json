@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "crons": [{ "path": "/api/cron-notifications", "schedule": "0 12 * * *" }],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "Permissions-Policy", "value": "camera=(self)" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; connect-src 'self' https://world.openfoodfacts.org; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" }
+      ]
+    }
+  ]
+}

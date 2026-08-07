@@ -1,62 +1,86 @@
-# Estoque Casa PWA
+# Estoque Casa
 
-Aplicação web estática para controle doméstico de alimentos, validade por unidade, histórico, lista de compras automática, notificações, backup e sincronização com `database.json` via GitHub REST API.
+PWA doméstica para controlar produtos, quantidades e validades. A versão 2 usa uma API privada na Vercel e PostgreSQL no Neon. Alterações feitas sem internet ficam em uma fila no aparelho e são enviadas automaticamente quando a conexão retorna.
 
-## Arquivos
+## O que mudou
 
-- `index.html`: estrutura da aplicação.
-- `styles.css`: interface responsiva inspirada em apps iPhone, com modo claro e escuro.
-- `app.js`: regras de estoque, GitHub API, PWA, notificações, busca, filtros, importação e exportação.
-- `sw.js`: Service Worker para funcionamento offline.
-- `manifest.json`: instalação como PWA.
-- `database.json`: banco inicial.
-- `icons/`: ícones do app.
+- O token do GitHub e a gravação em `database.json` não são mais usados.
+- A senha é validada no servidor e a sessão usa cookie `HttpOnly` assinado.
+- Produtos, histórico, compras e operações processadas ficam em tabelas no Neon.
+- Cada alteração possui um identificador único; reenvios não duplicam consumo ou entradas.
+- Quantidade é o total disponível. Validades identificam unidades/lotes dentro desse total.
+- Backup, importação, datas locais, câmera e campos exibidos em HTML foram corrigidos.
 
-## Publicar no GitHub Pages
+O arquivo `database.json` permanece somente como exemplo/migração. Ele não é acessado pela aplicação em produção.
 
-1. Crie um repositório no GitHub, por exemplo `estoque-casa`.
-2. Envie todos os arquivos deste projeto para a raiz do repositório.
-3. Abra o repositório no GitHub.
-4. Vá em `Settings` > `Pages`.
-5. Em `Build and deployment`, selecione `Deploy from a branch`.
-6. Escolha a branch `main` e pasta `/root`.
-7. Salve e aguarde o link do GitHub Pages.
+## Criar os projetos sem afetar os existentes
 
-## Gerar Personal Access Token
+### 1. Neon
 
-1. No GitHub, clique na sua foto > `Settings`.
-2. Acesse `Developer settings` > `Personal access tokens`.
-3. Prefira `Fine-grained tokens`.
-4. Selecione somente o repositório onde o app será hospedado.
-5. Permita acesso de leitura e escrita em `Contents`.
-6. Gere o token e copie.
+1. No painel Neon, escolha **New project**.
+2. Dê um nome como `estoque-casa`.
+3. Copie a connection string do novo projeto. Ela começa com `postgresql://`.
 
-Importante: o token fica salvo no navegador onde você configurou o app. Por segurança, use um token exclusivo para este app e com acesso apenas ao repositório necessário.
+Não reutilize a connection string do outro projeto. As tabelas desta aplicação são criadas automaticamente no primeiro acesso.
 
-## Primeira configuração
+### 2. GitHub
 
-Ao abrir o app pela primeira vez, informe:
+Crie um repositório novo para esta versão ou envie estes arquivos ao repositório do Estoque Casa. Não envie `.env` ou `.env.local`.
 
-- GitHub Personal Access Token
-- Usuário GitHub
-- Nome do repositório
-- Branch, normalmente `main`
+### 3. Vercel
 
-Depois clique em `Salvar e sincronizar`. Se o arquivo `database.json` ainda não existir, o sistema cria automaticamente.
+1. No painel da Vercel, clique em **Add New > Project** e importe o repositório.
+2. Não é necessário escolher framework ou comando de build.
+3. Em **Environment Variables**, cadastre:
 
-## Uso diário
+   - `DATABASE_URL`: connection string do novo projeto Neon.
+   - `APP_PASSWORD`: senha que será usada na tela de entrada.
+   - `SESSION_SECRET`: texto aleatório longo, diferente da senha.
+   - `VAPID_PUBLIC_KEY` e `VAPID_PRIVATE_KEY`: chaves das notificações Web Push.
+   - `CRON_SECRET`: outro texto aleatório longo, usado para proteger a tarefa diária.
 
-- Cadastre produtos em `Produtos`.
-- Informe uma validade por linha para controlar cada unidade separadamente.
-- Ao consumir, o sistema baixa automaticamente a unidade com vencimento mais próximo.
-- Quando um produto chega a zero, ele entra na lista de compras.
-- O Dashboard mostra total, próximos vencimentos, vencidos, em falta e consumidos no mês.
-- Use exportar, importar, backup e restaurar para segurança extra.
+4. Faça o deploy. Todas essas variáveis devem estar habilitadas para **Production**.
 
-## Observações técnicas
+Para gerar `SESSION_SECRET` no PowerShell:
 
-- Não há backend. Tudo roda no navegador.
-- A sincronização usa diretamente a GitHub REST API.
-- Em modo offline, alterações ficam salvas localmente e são sincronizadas quando a conexão voltar.
-- A leitura de código de barras depende da API `BarcodeDetector`, que não existe em todos os navegadores. Quando não estiver disponível, cadastre o código manualmente.
-- A busca por nome via código de barras consulta Open Food Facts quando possível.
+```powershell
+[Convert]::ToBase64String([Security.Cryptography.RandomNumberGenerator]::GetBytes(48))
+```
+
+Gere as chaves Web Push uma única vez, depois copie os dois valores para a Vercel:
+
+```sh
+npx web-push generate-vapid-keys
+```
+
+O mesmo comando de chave aleatória pode ser usado para criar `CRON_SECRET`.
+
+## Migrar dados do arquivo antigo
+
+1. Entre no aplicativo novo.
+2. Clique em **Importar JSON**.
+3. Selecione seu `database.json` ou um backup exportado pelo aplicativo antigo.
+4. Confirme a substituição.
+
+Faça uma exportação antes da migração. A importação substitui todo o conteúdo do banco novo, mas não toca em nenhum outro projeto Neon.
+
+## Desenvolvimento local
+
+Copie `.env.example` para `.env.local`, preencha as variáveis e execute:
+
+```sh
+npm install
+npm run dev
+```
+
+O comando de desenvolvimento baixa a CLI atual da Vercel quando necessário; ela não fica incluída nas dependências de produção.
+
+Validação de sintaxe:
+
+```sh
+npm run check
+```
+
+## Notificações
+
+Depois do deploy, abra o aplicativo em cada aparelho e toque no sino para autorizar. Uma tarefa diária da Vercel verifica as validades às 09:00 no horário de Brasília e envia Web Push mesmo com a PWA fechada. No iPhone, instale a PWA pela opção **Adicionar à Tela de Início** antes de ativar notificações.

@@ -17,23 +17,12 @@
       <div class="setup-card glass-card">
         <div class="app-logo">🏠</div>
         <h1>Estoque Casa</h1>
-        <p>Configure seu repositório GitHub para salvar o estoque automaticamente no arquivo <strong>database.json</strong>.</p>
+        <p>Entre para acessar seu estoque doméstico.</p>
         <form id="setupForm" class="form-grid">
-          <label>GitHub Personal Access Token
-            <input id="githubToken" type="password" autocomplete="off" placeholder="ghp_..." required />
-          </label>
-          <label>Usuário GitHub
-            <input id="githubOwner" type="text" autocomplete="username" placeholder="seu-usuario" required />
-          </label>
-          <label>Repositório
-            <input id="githubRepo" type="text" placeholder="estoque-casa" required />
-          </label>
-          <label>Branch
-            <input id="githubBranch" type="text" value="main" required />
-          </label>
-          <button class="primary-btn" type="submit">Salvar e sincronizar</button>
+          <label>Senha<input id="loginPassword" type="password" autocomplete="current-password" required /></label>
+          <button class="primary-btn" type="submit">Entrar</button>
         </form>
-        <p class="muted small">O token fica salvo apenas neste navegador. Em celulares compartilhados, use um token com permissões mínimas.</p>
+        <p class="muted small">A senha não é armazenada no navegador.</p>
       </div>
     </section>
 
@@ -47,7 +36,7 @@
           <button id="syncBtn" class="icon-btn" title="Sincronizar">↻</button>
           <button id="notifyBtn" class="icon-btn" title="Notificações">🔔</button>
           <button id="themeBtn" class="icon-btn" title="Tema">◐</button>
-          <button id="settingsBtn" class="icon-btn" title="Configurações">⚙</button>
+          <button id="settingsBtn" class="icon-btn" title="Dados e sessão">⚙</button>
         </div>
       </header>
 
@@ -121,16 +110,16 @@
       </div>
       <input type="hidden" id="productId" />
       <div class="form-grid two">
-        <label>Nome<input id="name" required autocomplete="off" /></label>
-        <label>Quantidade<input id="quantity" type="number" min="0" step="1" required /></label>
-        <label>Validade principal<input id="quickExpiration" type="date" /></label>
+        <label>Nome<input id="name" required /></label>
         <label>Categoria<select id="category"></select></label>
         <label>Marca<input id="brand" /></label>
+        <label>Quantidade<input id="quantity" type="number" min="0" step="1" required /></label>
         <label>Unidade<select id="unit"><option>un</option><option>kg</option><option>g</option><option>L</option><option>ml</option><option>pacote</option><option>caixa</option></select></label>
         <label>Local de armazenamento<input id="location" placeholder="Ex: prateleira superior" /></label>
         <label>Código de barras<div class="inline"><input id="barcode" /><button type="button" class="soft-btn" id="scanBtn">Ler</button></div></label>
+        <label>Foto<input id="photo" type="file" accept="image/*" /></label>
       </div>
-      <label>Validades diferentes por unidade <textarea id="expirations" rows="4" placeholder="Use apenas se tiver datas diferentes. Uma validade por linha: 2026-08-01"></textarea></label>
+      <label>Validades por unidade <textarea id="expirations" rows="4" placeholder="Uma validade por linha: 2026-08-01"></textarea></label>
       <label>Observações<textarea id="notes" rows="3"></textarea></label>
       <div class="modal-actions">
         <button type="button" class="danger-btn hidden" id="deleteProductBtn">Excluir</button>
@@ -142,17 +131,13 @@
 
   <dialog id="settingsDialog" class="modal">
     <form id="settingsForm" method="dialog" class="modal-card">
-      <div class="modal-header"><h2>Configurações</h2><button type="button" class="icon-btn" data-close="settingsDialog">×</button></div>
-      <div class="form-grid">
-        <label>Token GitHub<input id="settingsToken" type="password" /></label>
-        <label>Usuário<input id="settingsOwner" /></label>
-        <label>Repositório<input id="settingsRepo" /></label>
-        <label>Branch<input id="settingsBranch" /></label>
-      </div>
+      <div class="modal-header"><h2>Dados e sessão</h2><button type="button" class="icon-btn" data-close="settingsDialog">×</button></div>
+      <p id="syncStatus" class="muted">Verificando sincronização...</p>
+      <p class="muted small">As alterações são guardadas neste aparelho e enviadas automaticamente ao Neon. Exportações são arquivos independentes e recuperáveis.</p>
       <div class="modal-actions">
-        <button type="button" class="soft-btn" id="restoreBtn">Restaurar backup</button>
-        <button type="button" class="soft-btn" data-close="settingsDialog">Cancelar</button>
-        <button type="submit" class="primary-btn">Salvar</button>
+          <button type="button" class="soft-btn" id="restoreBtn">Restaurar backup</button>
+          <button type="button" class="danger-btn" id="logoutBtn">Sair</button>
+          <button type="button" class="soft-btn" data-close="settingsDialog">Cancelar</button>
       </div>
     </form>
   </dialog>

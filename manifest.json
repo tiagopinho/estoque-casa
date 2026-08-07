@@ -1,7 +1,7 @@
 {
   "name": "Estoque Casa",
   "short_name": "Estoque",
-  "description": "Controle doméstico de estoque de alimentos com validade, compras e sincronização GitHub.",
+  "description": "Controle doméstico de estoque, validades, compras e sincronização segura.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

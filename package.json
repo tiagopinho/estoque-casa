@@ -1,0 +1,15 @@
+{
+  "name": "estoque-casa",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes vercel@latest dev",
+    "check": "node --check app.js && node --check sw.js && node --check api/_lib.js && node --check api/login.js && node --check api/logout.js && node --check api/data.js && node --check api/mutate.js && node --check api/push-config.js && node --check api/subscribe.js && node --check api/cron-notifications.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
+    "web-push": "^3.6.7"
+  },
+  "engines": { "node": ">=22" }
+}
