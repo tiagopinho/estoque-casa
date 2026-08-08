@@ -60,12 +60,13 @@ async function boot() {
   document.body.classList.toggle('dark',localStorage.getItem('theme')==='dark');
   registerServiceWorker(); fillSelects(); bindEvents();
   state.db=normalizeDb(state.db); renderAll();
-  try { await startApp(); } catch(error) { if(error.status===401) $('#setupScreen').classList.remove('hidden'); else if(state.db.products.length) { $('#mainApp').classList.remove('hidden'); toast('Modo offline: alterações serão sincronizadas depois.'); } else { $('#setupScreen').classList.remove('hidden'); toast(error.message); } }
+  try { await startApp(); } catch(error) { if(error.status===401) { $('#mainApp').classList.add('hidden'); $('#setupScreen').classList.remove('hidden'); } else if(state.db.products.length) { $('#mainApp').classList.remove('hidden'); toast('Modo offline: alterações serão sincronizadas depois.'); } else { $('#mainApp').classList.add('hidden'); $('#setupScreen').classList.remove('hidden'); toast(error.message); } }
 }
 async function startApp() {
-  $('#setupScreen').classList.add('hidden'); $('#mainApp').classList.remove('hidden');
   await flushQueue();
-  if(!state.queue.length) await fetchDatabase();
+  const remote=normalizeDb(await api('/api/data'));
+  if(!state.queue.length) { state.db=remote; saveLocal(); }
+  $('#setupScreen').classList.add('hidden'); $('#mainApp').classList.remove('hidden');
   renderAll(); checkNotifications();
 }
 function registerServiceWorker() { if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
