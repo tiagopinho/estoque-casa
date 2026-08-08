@@ -111,16 +111,16 @@
       <input type="hidden" id="productId" />
       <div class="form-grid two">
         <label>Nome<input id="name" required /></label>
-        <label>Categoria<select id="category"></select></label>
-        <label>Marca<input id="brand" /></label>
-        <label>Quantidade<input id="quantity" type="number" min="0" step="1" required /></label>
-        <label>Unidade<select id="unit"><option>un</option><option>kg</option><option>g</option><option>L</option><option>ml</option><option>pacote</option><option>caixa</option></select></label>
-        <label>Local de armazenamento<input id="location" placeholder="Ex: prateleira superior" /></label>
-        <label>Código de barras<div class="inline"><input id="barcode" /><button type="button" class="soft-btn" id="scanBtn">Ler</button></div></label>
-        <label>Foto<input id="photo" type="file" accept="image/*" /></label>
+        <label class="hidden">Categoria<select id="category"></select></label>
+        <label class="hidden">Marca<input id="brand" /></label>
+        <label>Quantidade<input id="quantity" type="number" min="1" step="1" required /></label>
+        <label class="hidden">Unidade<select id="unit"><option>un</option><option>kg</option><option>g</option><option>L</option><option>ml</option><option>pacote</option><option>caixa</option></select></label>
+        <label class="hidden">Local de armazenamento<input id="location" placeholder="Ex: prateleira superior" /></label>
+        <label class="hidden">Código de barras<div class="inline"><input id="barcode" /><button type="button" class="soft-btn" id="scanBtn">Ler</button></div></label>
+        <label class="hidden">Foto<input id="photo" type="file" accept="image/*" /></label>
       </div>
-      <label>Validades por unidade <textarea id="expirations" rows="4" placeholder="Uma validade por linha: 2026-08-01"></textarea></label>
-      <label>Observações<textarea id="notes" rows="3"></textarea></label>
+      <label id="expirationField">Validade deste lote<input id="expirations" type="date" required /></label>
+      <label class="hidden">Observações<textarea id="notes" rows="3"></textarea></label>
       <div class="modal-actions">
         <button type="button" class="danger-btn hidden" id="deleteProductBtn">Excluir</button>
         <button type="button" class="soft-btn" data-close="productDialog">Cancelar</button>

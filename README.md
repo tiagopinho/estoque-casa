@@ -9,6 +9,7 @@ PWA doméstica para controlar produtos, quantidades e validades. A versão 2 usa
 - Produtos, histórico, compras e operações processadas ficam em tabelas no Neon.
 - Cada alteração possui um identificador único; reenvios não duplicam consumo ou entradas.
 - Quantidade é o total disponível. Validades identificam unidades/lotes dentro desse total.
+- Cada inclusão recebe uma quantidade e uma única validade de lote; novas inclusões com o mesmo nome são somadas ao produto existente.
 - Backup, importação, datas locais, câmera e campos exibidos em HTML foram corrigidos.
 
 O arquivo `database.json` permanece somente como exemplo/migração. Ele não é acessado pela aplicação em produção.
